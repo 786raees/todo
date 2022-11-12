@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>
+        Add Todo
+    </h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Submit">
+    </form>
+    <h1>Todos</h1>
+    {{todos_list.count}}
+    <ul>
+        {% for todo in todos_list %}
+        {% if todo.done %}
+        <li>
+            <s>{{todo.task}}</s>
+        </li>
+          {% else %}
+          <li>{{todo.task}}</li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+        
+</body>
+</html>
