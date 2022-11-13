@@ -19,13 +19,16 @@
     {{todos_list.count}}
     <ul>
         {% for todo in todos_list %}
-        {% if todo.done %}
         <li>
-            <s>{{todo.task}}</s>
-        </li>
-          {% else %}
-          <li>{{todo.task}}</li>
+        {% if todo.done %}
+        <s>{{todo.task}}</s>
+        {% else %}
+        {{todo.task}}
         {% endif %}
+        <a href="{% url 'delete_todo' todo.id %}">
+            <button>delete</button>
+        </a>
+        </li>
         {% endfor %}
     </ul>
         

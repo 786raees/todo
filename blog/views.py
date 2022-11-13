@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Todo
 from .forms import TodoForm
 # Create your views here.
@@ -14,3 +14,9 @@ def index(request):
         "form": todo_form
     }
     return render(request, 'home.html', context)
+
+
+def delete_todo(request, id):
+    todo = Todo.objects.get(id=id)
+    todo.delete()
+    return redirect('home_view')
