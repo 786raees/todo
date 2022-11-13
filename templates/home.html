@@ -28,6 +28,9 @@
         <a href="{% url 'delete_todo' todo.id %}">
             <button>delete</button>
         </a>
+        <a href="{% url 'update' todo.id %}">
+            <button>Edit</button>
+        </a>
         </li>
         {% endfor %}
     </ul>
